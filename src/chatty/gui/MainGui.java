@@ -624,7 +624,7 @@ public class MainGui extends JFrame implements Runnable {
             }
         });
         
-        hotkeyManager.registerAction("selection.next", "User Selection: Next", new AbstractAction() {
+        hotkeyManager.registerAction("selection.next", "User Selection: Next User", new AbstractAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -633,7 +633,7 @@ public class MainGui extends JFrame implements Runnable {
             }
         });
         
-        hotkeyManager.registerAction("selection.nextExitAtBottom", "User Selection: Next (Exit at bottom)", new AbstractAction() {
+        hotkeyManager.registerAction("selection.nextExitAtBottom", "User Selection: Next User (Exit at bottom)", new AbstractAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -642,7 +642,7 @@ public class MainGui extends JFrame implements Runnable {
             }
         });
         
-        hotkeyManager.registerAction("selection.previous", "User Selection: Previous", new AbstractAction() {
+        hotkeyManager.registerAction("selection.previous", "User Selection: Previous User", new AbstractAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -650,7 +650,34 @@ public class MainGui extends JFrame implements Runnable {
                 channel.selectPreviousUser();
             }
         });
-        
+
+        hotkeyManager.registerAction("selection.nextLine", "User Selection: Next Line", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Channel channel = channels.getLastActiveChannel();
+                channel.selectNextLine();
+            }
+        });
+
+        hotkeyManager.registerAction("selection.nextLineExitAtBottom", "User Selection: Next Line (Exit at bottom)", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Channel channel = channels.getLastActiveChannel();
+                channel.selectNextLineExitAtBottom();
+            }
+        });
+
+        hotkeyManager.registerAction("selection.previousLine", "User Selection: Previous Line", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Channel channel = channels.getLastActiveChannel();
+                channel.selectPreviousLine();
+            }
+        });
+
         hotkeyManager.registerAction("selection.exit", "User Selection: Exit", new AbstractAction() {
 
             @Override

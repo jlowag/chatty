@@ -773,7 +773,19 @@ public class Channel extends JPanel {
     public final void toggleUserlist() {
         setUserlistEnabled(!userlistEnabled);
     }
-    
+
+    public void selectPreviousLine() {
+        text.selectPreviousLine();
+    }
+
+    public void selectNextLine() {
+        text.selectNextLine();
+    }
+
+    public void selectNextLineExitAtBottom() {
+        text.selectNextLineExitAtBottom();
+    }
+
     public void selectPreviousUser() {
         text.selectPreviousUser();
     }

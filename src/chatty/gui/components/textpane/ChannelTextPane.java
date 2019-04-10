@@ -1287,7 +1287,19 @@ public class ChannelTextPane extends JTextPane implements LinkListener, Emoticon
         attr.addAttribute(Attribute.CUSTOM_BACKGROUND, color);
         doc.setParagraphAttributes(offset, 1, attr, false);
     }
-    
+
+    public void selectPreviousLine() {
+        lineSelection.move(-1, false, true);
+    }
+
+    public void selectNextLine() {
+        lineSelection.move(1, false, true);
+    }
+
+    public void selectNextLineExitAtBottom() {
+        lineSelection.move(1, true, true);
+    }
+
     public void selectPreviousUser() {
         lineSelection.move(-1);
     }
@@ -1297,7 +1309,7 @@ public class ChannelTextPane extends JTextPane implements LinkListener, Emoticon
     }
     
     public void selectNextUserExitAtBottom() {
-        lineSelection.move(1, true);
+        lineSelection.move(1, true, false);
     }
     
     public void exitUserSelection() {
@@ -1474,7 +1486,7 @@ public class ChannelTextPane extends JTextPane implements LinkListener, Emoticon
         }
         
         private void move(int jump) {
-            move(jump, false);
+            move(jump, false, false);
         }
         
         /**
@@ -1483,7 +1495,7 @@ public class ChannelTextPane extends JTextPane implements LinkListener, Emoticon
          * 
          * @param jump 
          */
-        private void move(int jump, boolean exitAtBottom) {
+        private void move(int jump, boolean exitAtBottom, boolean lineSelectionMode) {
             
             subduedHl = false;
             
@@ -1524,7 +1536,7 @@ public class ChannelTextPane extends JTextPane implements LinkListener, Emoticon
                     
                     continue;
                 }
-                if (user == currentUser) {
+                if (!lineSelectionMode && user == currentUser) {
                     continue;
                 }
                 if (!startSearch) {
